@@ -5,17 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="be779fc0-c132-4686-803d-559664534872" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ChatBotMedicalAI.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Chat/ChatGUI.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Chat/ChatGUI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Home/HomeGUI.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Home/HomeGUI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/archive.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/home/archive.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/home/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/home/logo2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ChatBotMedicalAI.iml" beforeDir="false" afterPath="$PROJECT_DIR$/ChatBotMedicalAI.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Chat/ChatGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Chat/ChatGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Home/HomeGUI.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/Home/HomeGUI.form" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,11 +30,25 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;angierevilla&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/angierevilla/ChatBotMedicalAI.git&quot;,
+    &quot;accountId&quot;: &quot;dd7bb215-b661-43aa-9f1a-7b5d51490341&quot;
+  }
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 7
 }</component>
   <component name="ProjectId" id="2mO9DnJvOjANqcisAXcSZrNnUrK" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -44,20 +56,26 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Application.HomeGUI.executor": "Run",
+    "Application.HomeGUI.executor": "Debug",
     "Application.Main.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/oswaldoescobarhuisa/Documents/Projects/Angie/ChatBotMedicalAI/src/resources",
+    "last_opened_file_path": "C:/Users/AngGameplays/IdeaProjects/ChatBotMedicalAI/res/home",
     "onboarding.tips.debug.path": "/Users/oswaldoescobarhuisa/Documents/Projects/Angie/ChatBotMedicalAI/src/Main.java",
     "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\AngGameplays\IdeaProjects\ChatBotMedicalAI\res\home" />
+      <recent name="C:\Users\AngGameplays\IdeaProjects\ChatBotMedicalAI\res" />
       <recent name="$PROJECT_DIR$/src/resources" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\AngGameplays\IdeaProjects\ChatBotMedicalAI\res\home" />
     </key>
   </component>
   <component name="RunManager">
@@ -80,13 +98,6 @@
       </list>
     </recent_temporary>
   </component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="jdk-21.0.1-openjdk-21.0.1-4caba194b151-9b16c6e2" />
-      </set>
-    </attachedChunks>
-  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -108,5 +119,16 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Chat/ChatGUI.java</url>
+          <line>43</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

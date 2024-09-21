@@ -1,21 +1,27 @@
 package Chat;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 
 public class ChatGUI {
 
     private JPanel mainPanel;
-    private JTextArea chatArea;
+    private JPanel chatPanel;
+    private JScrollPane scrollPane;
     private JTextField inputField;
     private JButton sendButton;
     private JButton uploadButton;
     private boolean fileUploaded; // Variable para rastrear si se ha subido un archivo
-    private String[] botResponses; // Arreglo de respuestas del bot
+    private String[] botGeneralResponses; // Arreglo de respuestas generales del bot
+    private Map<String, String> keywordResponses; // Mapa de palabras clave y respuestas
     private Random random; // Generador de números aleatorios
 
     public ChatGUI() {
@@ -23,33 +29,51 @@ public class ChatGUI {
         JFrame frame = new JFrame("Chat Bot");
         mainPanel = new JPanel();
         mainPanel.setLayout(new BorderLayout());
+        mainPanel.setPreferredSize(new Dimension(600,400));
 
-        // Área de texto para mostrar el chat
-        chatArea = new JTextArea(15, 30);
-        chatArea.setEditable(false);
-        JScrollPane scrollPane = new JScrollPane(chatArea);
+        // Panel para mostrar los mensajes (chat panel)
+        chatPanel = new JPanel();
+        chatPanel.setLayout(new BoxLayout(chatPanel, BoxLayout.Y_AXIS)); // Usar BoxLayout para alinear los globos verticalmente
+        chatPanel.setBackground(Color.BLACK);
+
+        // Añadir un JScrollPane para que el área de chat sea desplazable
+        scrollPane = new JScrollPane(chatPanel);
+        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+
         mainPanel.add(scrollPane, BorderLayout.CENTER);
+        addChatBubble("Bienvenido, sube el archivo de tu historial clínico", new Color(173, 216, 230), FlowLayout.RIGHT); // Globo del usuario (color celeste)
 
         // Panel para el campo de entrada y botones
         JPanel inputPanel = new JPanel();
+        inputPanel.setLayout(new FlowLayout());
         inputField = new JTextField(20);
         sendButton = new JButton("Enviar");
-        uploadButton = new JButton(new ImageIcon("resources/archive.png")); // Cambia el path al icono deseado
+        uploadButton = new JButton(); // Cambia el path al icono deseado
         uploadButton.setText("Sube archivo");
         uploadButton.setToolTipText("Subir archivo");
 
         // Inicializar fileUploaded como false
         fileUploaded = false;
 
-        // Inicializar respuestas del bot
-        botResponses = new String[]{
-                "¿Cómo puedo ayudarte hoy?",
-                "Recuerda beber suficiente agua.",
+        // Inicializar respuestas generales del bot
+        botGeneralResponses = new String[]{
+                "Recuerda llevar una dieta balanceada.",
                 "Es importante descansar adecuadamente.",
-                "Siempre es bueno hacer ejercicio.",
                 "Si tienes dudas, consulta a un profesional.",
-                "La salud mental es tan importante como la física."
+                "Recuerda hacer chequeos periódicos.",
+                "Mantén una vida activa para mejorar tu salud física.",
+                "La salud mental también es importante, busca apoyo si lo necesitas."
         };
+
+        // Inicializar palabras clave y respuestas específicas del médico
+        keywordResponses = new HashMap<>();
+        keywordResponses.put("dolor", "¿Dónde sientes el dolor y qué tan intenso es?");
+        keywordResponses.put("fiebre", "Es importante mantener la hidratación, ¿has tomado algún antipirético?");
+        keywordResponses.put("tos", "¿Hace cuánto tienes la tos? ¿Es seca o con flema?");
+        keywordResponses.put("cansancio", "El cansancio puede ser causado por varias razones, ¿has estado durmiendo bien?");
+        keywordResponses.put("mareo", "Los mareos pueden estar relacionados con varios factores, es recomendable que te sientes o recuestes y te hidrates.");
+        keywordResponses.put("gracias", "De nada, siempre estoy aquí para ayudarte.");
+
         random = new Random();
 
         // Agregar ActionListener al botón de enviar
@@ -91,21 +115,51 @@ public class ChatGUI {
     }
 
     private void sendMessage() {
-        String message = inputField.getText();
+        String message = inputField.getText().trim();
         if (!fileUploaded) {
             JOptionPane.showMessageDialog(mainPanel, "Por favor, suba un archivo antes de enviar un mensaje.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
-        if (!message.trim().isEmpty()) {
-            chatArea.append("Tú: " + message + "\n"); // Mostrar el mensaje en el área de chat
+        if (!message.isEmpty()) {
+            addChatBubble("Tú: " + message, new Color(173, 216, 230), FlowLayout.RIGHT); // Globo del usuario (color celeste)
             inputField.setText(""); // Limpiar el campo de entrada
 
-            // Respuesta del medicoBOT
-            String botResponse = botResponses[random.nextInt(botResponses.length)];
-            chatArea.append("medicoBOT: " + botResponse + "\n"); // Mostrar la respuesta del bot
+            // Responder basado en palabras clave
+            String botResponse = getBotResponse(message);
+            addChatBubble("medicoBOT: " + botResponse, new Color(211, 211, 211), FlowLayout.LEFT); // Globo del bot (color gris claro)
         } else {
             JOptionPane.showMessageDialog(mainPanel, "Por favor, ingrese un mensaje.", "Error", JOptionPane.ERROR_MESSAGE);
         }
+    }
+
+    private String getBotResponse(String userMessage) {
+        // Recorrer las palabras clave para buscar una coincidencia
+        for (String keyword : keywordResponses.keySet()) {
+            if (userMessage.toLowerCase().contains(keyword)) {
+                return keywordResponses.get(keyword);
+            }
+        }
+        // Si no se encuentra una palabra clave, dar una respuesta general aleatoria
+        return botGeneralResponses[random.nextInt(botGeneralResponses.length)];
+    }
+
+    private void addChatBubble(String message, Color color, int alignment) {
+        JPanel bubblePanel = new JPanel(new FlowLayout(alignment)); // Panel para el globo de chat
+        JLabel messageLabel = new JLabel("<html><p style='width: 150px;'>" + message + "</p></html>"); // Envolver el texto para el ajuste de línea
+        messageLabel.setOpaque(true);
+        messageLabel.setBackground(color);
+        messageLabel.setBorder(new LineBorder(Color.BLACK, 1, true)); // Borde redondeado
+        messageLabel.setBorder(new EmptyBorder(10, 10, 10, 10)); // Espacio alrededor del texto
+        bubblePanel.add(messageLabel);
+
+        chatPanel.add(bubblePanel);
+        chatPanel.revalidate(); // Refrescar el panel de chat para mostrar el nuevo mensaje
+        chatPanel.repaint(); // Repintar el área para reflejar los cambios
+
+        // Desplazarse automáticamente hacia el final del JScrollPane
+        SwingUtilities.invokeLater(() -> {
+            scrollPane.getVerticalScrollBar().setValue(scrollPane.getVerticalScrollBar().getMaximum());
+        });
     }
 
     private void uploadFile() {
@@ -113,7 +167,7 @@ public class ChatGUI {
         int returnValue = fileChooser.showOpenDialog(mainPanel);
         if (returnValue == JFileChooser.APPROVE_OPTION) {
             File selectedFile = fileChooser.getSelectedFile();
-            chatArea.append("Archivo subido: " + selectedFile.getName() + "\n");
+            addChatBubble("Historial subido correctamente: " + selectedFile.getName(), new Color(173, 216, 230), FlowLayout.RIGHT);
             fileUploaded = true; // Marcar que se ha subido un archivo
         }
     }
