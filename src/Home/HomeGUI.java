@@ -9,13 +9,13 @@ import java.awt.event.ActionListener;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 
-public class HomeGUI {
-    private JPanel mainHome; // Ensure this field matches your form
-    private JButton button1;
-    private JTextField ingreseDNITextField;
+public class HomeGUI { //clase
+    private JPanel mainHome; // partes de las figuras
+    private JButton button1; // boton
+    private JTextField ingreseDNITextField; //texto
     private JTextArea esteEsUnChatTextArea;
 
-    public HomeGUI() {
+    public HomeGUI() { //login y el boton
         // Initialize the GUI components here
         JFrame frame = new JFrame("Chat Bot Medical AI");
         frame.setContentPane(mainHome); // Assuming mainHome is your main panel
@@ -24,7 +24,6 @@ public class HomeGUI {
         frame.setLocationRelativeTo(null); // Center the frame on the screen
         frame.setVisible(true); // Make the frame visible
 
-        setPlaceholder(ingreseDNITextField, "my home");
         button1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
