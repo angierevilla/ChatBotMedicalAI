@@ -122,7 +122,13 @@ function agregarMensaje(remitente, mensaje) {
     const chatWindow = document.getElementById('chat-window');
     const mensajeDiv = document.createElement('div');
     mensajeDiv.classList.add('mb-2');
-    mensajeDiv.innerHTML = `<strong>${remitente}:</strong> ${mensaje}`;
+    mensajeDiv.classList.add('p-2');
+    mensajeDiv.classList.add('rounded');
+    mensajeDiv.innerHTML = `<div class="flex flex-row"> <img src="./img/logo.png" alt="${remitente}" width="40" height="40" class="h-8 w-8 rounded-full mb-2"> <div class="text-gray-700 bg-white p-2 rounded-lg">${mensaje}</div><br> </div>`;
+
+    if (remitente === 'Tú') {
+        mensajeDiv.innerHTML = `<div class="flex flex-row-reverse"> <img src="https://api.dicebear.com/5.x/initials/svg?seed=${remitente}" alt="${remitente}" width="40" height="40" class="h-8 w-8 rounded-full mb-2"> <div class="text-gray-700 bg-white border p-2 rounded-lg bg-gray-100 mr-2">${mensaje}</div> <br> </div>`;
+    }
     chatWindow.appendChild(mensajeDiv);
     chatWindow.scrollTop = chatWindow.scrollHeight;
 }
