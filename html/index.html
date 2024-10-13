@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,27 +8,40 @@
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+
+<body class="">
     <!-- Formulario de DNI-->
-     <div id="dni-form" class="bg-white p-8 rounded-lg shadow-lg">
-        <img src="./img/logo.png" class="mx-auto mb-4 h-32">
-        <h1 class="text-2xl font-bold mb-4">
-            Ingrese Su DNI
-        </h1>
-        <input type="text" id="dni-input" placeholder="DNI" class="border p-2 w-full mb-4">
-        <button id="submit-dni" class="bg-blue-500 text-white px-4 py-2 rounded-lg">Consultar</button>
-     </div>
-     <!-- Interfaz del chat -->
-<div id="chat-interface" class="hidden flex flex-col bg-white p-4 rounded shadow-md w-full max-w-md h-[80vh]">
-    <div id="chat-window" class="flex-grow overflow-y-auto mb-4 p-2 border rounded">
-        <!-- mensajes del chat-->
+    <div id="dni-form" class=" grid grid-cols-3 h-screen">
+        <div class="block col-span-2 bg-center bg-top bg-cover"
+            style="background-image: url('./img/portada_20chat-enhanced.png');">
+        </div>
+        <div class="bg-white col-span-1 p-4 rounded shadow-md ">
+            <div class="h-full flex flex-col justify-center p-4 max-w-sm mx-auto">
+                <h1 class="text-center text-xl font-bold mb-4 text-gray-700">
+                    Iniciar Chat Con El Asistente
+                </h1>
+                <label for="dni-input" class="block">
+                    <span class="text-gray-700 text-sm mb-2">DNI</span>
+                    <input type="text" id="dni-input" placeholder="12345678" class="border border-gray-400 p-3 w-full mb-4">
+                </label>
+                <button id="submit-dni" class="w-full bg-blue-500 text-white px-4 py-2 rounded-sm">Consultar</button>
+            </div>
+        </div>
     </div>
-    <div class="flex">
-        <input type="text"  id="chat-input" placeholder="Escribe tu mensaje" class="border p-2 flex-grow mr-2">
-        <button id="send-message" class="bg-blue-500 text-white px-4 py-2 rounded">Enviar</button>
+
+    <!-- Interfaz del chat -->
+    <div id="chat-interface" class="hidden flex flex-col bg-white p-4 rounded shadow-md max-w-[50%] mx-auto h-screen py-8">
+        <h1 class="text-2xl font-bold mb-4 text-gray-700 text-center">Consulta de Historia Clínica</h1>
+        <div id="chat-window" class="flex-grow overflow-y-auto mb-4 p-2 border rounded">
+            <!-- mensajes del chat-->
+        </div>
+        <div class="flex">
+            <input type="text" id="chat-input" placeholder="Escribe tu mensaje" class="border p-2 flex-grow mr-2">
+            <button id="send-message" class="bg-blue-500 text-white px-4 py-2 rounded">Enviar</button>
+        </div>
     </div>
-</div>
-<!-- Archivo Javascript -->
- <script src="app.js"></script>
+    <!-- Archivo Javascript -->
+    <script src="app.js"></script>
 </body>
+
 </html>
